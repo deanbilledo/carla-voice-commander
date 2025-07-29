@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Setup CARLA Voice Commander",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"dev_setup.py"
+			],
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

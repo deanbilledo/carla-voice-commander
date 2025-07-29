@@ -1,17 +1,26 @@
-carla==0.9.13
+# Core dependencies (required)
 PyQt5==5.15.9
-google-generativeai==0.3.2
-speech_recognition==3.10.0
-pyttsx3==2.90
-pyaudio==0.2.11
-numpy==1.24.3
-opencv-python==4.8.0.74
-matplotlib==3.7.1
-pygame==2.5.0
-can==4.2.2
-python-can==4.2.2
-networkx==3.1
-scipy==1.10.1
-requests==2.31.0
-python-dotenv==1.0.0
-pytest==7.4.0
+google-generativeai>=0.3.0
+speech_recognition>=3.10.0
+pyttsx3>=2.90
+numpy>=1.24.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Audio dependencies (for speech recognition)
+pyaudio>=0.2.11
+
+# AI and math dependencies
+networkx>=3.1
+scipy>=1.10.0
+
+# Development and testing
+pytest>=7.4.0
+
+# Optional dependencies
+# carla>=0.9.5  # Install manually from CARLA releases
+# opencv-python>=4.8.0  # For computer vision features
+# matplotlib>=3.7.0  # For plotting and visualization
+# pygame>=2.5.0  # For game-like controls
+# can>=4.2.0  # For CAN bus simulation
+# python-can>=4.2.0  # For CAN bus simulation

@@ -1,0 +1,29 @@
+2025-07-29 22:38:52 - nlp.intent_classifier - INFO - Parsing command: follow that blue car
+2025-07-29 22:38:52 - nlp.intent_classifier - INFO - Parsing command: drive to the nearest gas station
+2025-07-29 22:38:52 - nlp.intent_classifier - INFO - Parsing command: park the car
+2025-07-29 22:38:52 - nlp.intent_classifier - INFO - Parsing command: speed up
+2025-07-29 22:38:52 - nlp.intent_classifier - INFO - Parsing command: stop the car
+2025-07-29 22:38:52 - nlp.intent_classifier - INFO - Parsing command: turn left at the intersection
+2025-07-29 22:38:52 - nlp.intent_classifier - INFO - Parsing command: fly to the moon
+2025-07-29 22:41:56 - nlp.intent_classifier - INFO - Parsing command: follow that blue car
+2025-07-29 22:41:56 - nlp.intent_classifier - INFO - Parsing command: drive to the nearest gas station
+2025-07-29 22:41:56 - nlp.intent_classifier - INFO - Parsing command: park the car
+2025-07-29 22:41:56 - nlp.intent_classifier - INFO - Parsing command: speed up
+2025-07-29 22:41:56 - nlp.intent_classifier - INFO - Parsing command: stop the car
+2025-07-29 22:41:56 - nlp.intent_classifier - INFO - Parsing command: turn left at the intersection
+2025-07-29 22:41:56 - nlp.intent_classifier - INFO - Parsing command: fly to the moon
+2025-07-29 22:45:28 - nlp.intent_classifier - INFO - Parsing command: turn left at the intersection
+2025-07-29 22:48:30 - nlp.intent_classifier - INFO - Parsing command: follow that blue car
+2025-07-29 22:50:17 - nlp.intent_classifier - INFO - Parsing command: follow that blue car
+2025-07-29 22:51:48 - nlp.intent_classifier - INFO - Parsing command: follow that blue car
+2025-07-29 22:57:27 - gemini_agent - ERROR - Failed to initialize Gemini AI: Google API key not configured
+2025-07-29 22:57:27 - gemini_agent - ERROR - Failed to initialize Gemini AI: Google API key not configured
+2025-07-29 22:57:27 - gemini_agent - ERROR - Failed to initialize Gemini AI: Google API key not configured
+2025-07-29 22:57:27 - gemini_agent - ERROR - Failed to initialize Gemini AI: Google API key not configured
+2025-07-29 22:57:27 - nlp.intent_classifier - INFO - Parsing command: follow that blue car
+2025-07-29 22:57:27 - nlp.intent_classifier - INFO - Parsing command: drive to the nearest gas station
+2025-07-29 22:57:27 - nlp.intent_classifier - INFO - Parsing command: park the car
+2025-07-29 22:57:27 - nlp.intent_classifier - INFO - Parsing command: speed up
+2025-07-29 22:57:27 - nlp.intent_classifier - INFO - Parsing command: stop the car
+2025-07-29 22:57:27 - nlp.intent_classifier - INFO - Parsing command: turn left at the intersection
+2025-07-29 22:57:27 - nlp.intent_classifier - INFO - Parsing command: fly to the moon

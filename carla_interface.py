@@ -3,7 +3,14 @@ CARLA Simulator Interface
 Handles connection to CARLA and vehicle control
 """
 
-import carla
+try:
+    import carla
+    CARLA_AVAILABLE = True
+except ImportError:
+    print("Warning: CARLA module not available. Install CARLA simulator for full functionality.")
+    carla = None
+    CARLA_AVAILABLE = False
+
 import time
 import numpy as np
 from config import Config
@@ -14,6 +21,10 @@ class CarlaInterface:
     
     def __init__(self):
         self.logger = Logger.get_logger(__name__)
+        
+        if not CARLA_AVAILABLE:
+            self.logger.warning("CARLA not available - interface will run in simulation mode")
+        
         self.client = None
         self.world = None
         self.vehicle = None
@@ -29,6 +40,10 @@ class CarlaInterface:
         
     def connect(self):
         """Connect to CARLA simulator"""
+        if not CARLA_AVAILABLE:
+            self.logger.warning("CARLA not available - using simulation mode")
+            return False
+            
         try:
             self.client = carla.Client(Config.CARLA_HOST, Config.CARLA_PORT)
             self.client.set_timeout(10.0)

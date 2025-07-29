@@ -38,9 +38,22 @@ carla-voice-commander/
 
 ## 🚀 Quick Start
 
+### Prerequisites
+- Python 3.8+
+- Microphone for voice input
+- Google Gemini API Key ([Get one here](https://makersuite.google.com/app/apikey))
+- CARLA Simulator 0.9.5+ (optional for development)
+
+### Method 1: Quick Setup (Recommended)
+```bash
+python quick_setup.py
+```
+
+### Method 2: Manual Setup
+
 1. **Install Dependencies**
    ```bash
-   pip install -r requirements.txt
+   pip install PyQt5 google-generativeai speech_recognition pyttsx3 numpy python-dotenv requests pytest
    ```
 
 2. **Set up Environment Variables**
@@ -53,16 +66,24 @@ carla-voice-commander/
    LOG_LEVEL=INFO
    ```
 
-3. **Start CARLA Simulator**
+3. **Run the Application**
    ```bash
-   # Run CARLA simulator (assuming CARLA is installed)
-   CarlaUE4.exe -windowed -ResX=800 -ResY=600
+   # GUI Dashboard mode
+   python main.py --mode dashboard
+   
+   # Command line mode  
+   python main.py --mode headless
+   
+   # Demo integration example
+   python integration_example.py
    ```
 
-4. **Run the Application**
-   ```bash
-   python main.py
-   ```
+### Optional: CARLA Simulator
+```bash
+# Download CARLA from https://github.com/carla-simulator/carla/releases
+# Then run (example for Windows):
+CarlaUE4.exe -windowed -ResX=800 -ResY=600
+```
 
 ## 🎯 Voice Commands Examples
 
@@ -83,11 +104,34 @@ The Gemini agent operates as a helpful and safe driving assistant that:
 
 ## 📋 Requirements
 
-- Python 3.8+
-- CARLA Simulator 0.9.13+
-- Google API Key for Gemini
-- PyQt5 for UI
-- Speech recognition libraries
+- **Python 3.8+**
+- **Google API Key** for Gemini ([Get one here](https://makersuite.google.com/app/apikey))
+- **Core Dependencies**: PyQt5, google-generativeai, speech_recognition, pyttsx3
+- **Optional**: CARLA Simulator 0.9.5+ for full simulation features
+- **Hardware**: Microphone for voice input, speakers for audio feedback
+
+## 🛠️ Development
+
+### Running Tests
+```bash
+python -m pytest tests/ -v
+```
+
+### Project Structure Details
+- **🧠 gemini_agent.py**: AI command processing with fallback to local NLP
+- **🗣️ voice/**: Speech recognition and text-to-speech synthesis  
+- **🤖 ai_control/**: Autonomous driving behaviors and PID control
+- **🗺️ navigation/**: A* pathfinding and route planning
+- **🧩 nlp/**: Natural language intent classification
+- **🚌 ramn/**: CAN bus simulation with multiple ECUs
+- **🖥️ ui_dashboard.py**: PyQt5 dashboard with real-time monitoring
+
+### Integration Example
+The `integration_example.py` demonstrates how all components work together:
+- Voice command processing with Gemini AI
+- Fallback to local NLP when Gemini unavailable  
+- CAN bus simulation for automotive realism
+- Real-time vehicle control and status updates
 
 ## 🛡️ Safety Features
 

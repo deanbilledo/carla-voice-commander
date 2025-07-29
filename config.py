@@ -48,7 +48,7 @@ class Config:
     def validate_config(cls):
         """Validate required configuration values"""
         if not cls.GOOGLE_API_KEY:
-            raise ValueError("GOOGLE_API_KEY is required but not set")
+            print("WARNING: GOOGLE_API_KEY is not set. Please add it to your .env file.")
         
         # Create necessary directories
         cls.LOGS_DIR.mkdir(exist_ok=True)
@@ -56,5 +56,8 @@ class Config:
         
         return True
 
-# Validate configuration on import
-Config.validate_config()
+# Validate configuration on import (with error handling)
+try:
+    Config.validate_config()
+except Exception as e:
+    print(f"Configuration warning: {e}")
