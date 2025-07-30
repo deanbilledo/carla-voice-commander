@@ -14,11 +14,13 @@ pyaudio>=0.2.11
 networkx>=3.1
 scipy>=1.10.0
 
+# Webots simulation
+webots-controller>=2023.1.2
+
 # Development and testing
 pytest>=7.4.0
 
 # Optional dependencies
-# carla>=0.9.5  # Install manually from CARLA releases
 # opencv-python>=4.8.0  # For computer vision features
 # matplotlib>=3.7.0  # For plotting and visualization
 # pygame>=2.5.0  # For game-like controls

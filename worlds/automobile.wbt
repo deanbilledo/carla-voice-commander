@@ -1,0 +1,163 @@
+#VRML_SIM R2023b utf8
+
+WorldInfo {
+  info [
+    "Voice Commander - Simple Automobile World"
+  ]
+  title "Voice Commander Automobile Simulation"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "wheel"
+      material2 "road"
+      coulombFriction [
+        0.8
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.267 0.534 0.802 1.147
+  position -2.832 -8.875 3.204
+  follow "vehicle"
+}
+Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+}
+DirectionalLight {
+  direction 0.1 -0.5 0.3
+}
+
+# Main vehicle
+DEF CAR Car {
+  translation 0 0 0.4
+  rotation 0 0 1 0
+  name "car"
+  model "BMW X5"
+  engineSound ""
+  controller "webots_controller"
+  supervisor TRUE
+  sensorsSlotFront [
+    Camera {
+      translation 0 0 0
+      name "camera"
+      width 1280
+      height 720
+      fieldOfView 1.57
+    }
+    GPS {
+      name "gps"
+    }
+    Compass {
+      name "compass"
+    }
+    DistanceSensor {
+      translation 0.5 0 0
+      name "front_sensor"
+      lookupTable [
+        0 0 0
+        2 2000 0
+      ]
+    }
+  ]
+  sensorsSlotRear [
+    DistanceSensor {
+      translation -0.5 0 0
+      rotation 0 0 1 3.14159
+      name "rear_sensor"
+      lookupTable [
+        0 0 0
+        2 2000 0
+      ]
+    }
+  ]
+  sensorsSlotLeft [
+    DistanceSensor {
+      translation 0 0.5 0
+      rotation 0 0 1 1.5708
+      name "left_sensor"
+      lookupTable [
+        0 0 0
+        2 2000 0
+      ]
+    }
+  ]
+  sensorsSlotRight [
+    DistanceSensor {
+      translation 0 -0.5 0
+      rotation 0 0 1 -1.5708
+      name "right_sensor"
+      lookupTable [
+        0 0 0
+        2 2000 0
+      ]
+    }
+  ]
+}
+
+# Traffic cones for navigation
+DEF CONE1 Solid {
+  translation 10 10 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.5 0
+      }
+      geometry Cone {
+        bottomRadius 0.3
+        height 0.6
+      }
+    }
+  ]
+  name "cone1"
+}
+
+DEF CONE2 Solid {
+  translation -10 10 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.5 0
+      }
+      geometry Cone {
+        bottomRadius 0.3
+        height 0.6
+      }
+    }
+  ]
+  name "cone2"
+}
+
+DEF CONE3 Solid {
+  translation 10 -10 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.5 0
+      }
+      geometry Cone {
+        bottomRadius 0.3
+        height 0.6
+      }
+    }
+  ]
+  name "cone3"
+}
+
+DEF CONE4 Solid {
+  translation -10 -10 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.5 0
+      }
+      geometry Cone {
+        bottomRadius 0.3
+        height 0.6
+      }
+    }
+  ]
+  name "cone4"
+}

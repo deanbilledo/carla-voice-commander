@@ -1,0 +1,222 @@
+2025-07-30 09:20:20 - gemini_agent - WARNING - Gemini AI not available - using fallback mode
+2025-07-30 09:20:20 - ramn.can_simulation - INFO - Added ECU: engine
+2025-07-30 09:20:20 - ramn.can_simulation - INFO - Added ECU: body
+2025-07-30 09:20:20 - ramn.can_simulation - INFO - Added ECU: brake
+2025-07-30 09:20:20 - ramn.can_simulation - INFO - Added ECU: steering
+2025-07-30 09:20:20 - ramn.can_simulation - INFO - Added ECU: transmission
+2025-07-30 09:20:21 - ECU_engine - INFO - ECU engine started
+2025-07-30 09:20:21 - ECU_body - INFO - ECU body started
+2025-07-30 09:20:21 - ECU_brake - INFO - ECU brake started
+2025-07-30 09:20:21 - ECU_steering - INFO - ECU steering started
+2025-07-30 09:20:21 - ECU_transmission - INFO - ECU transmission started
+2025-07-30 09:20:21 - ramn.can_simulation - INFO - CAN bus started
+2025-07-30 09:20:21 - ramn.can_simulation - INFO - Vehicle CAN simulation started
+2025-07-30 09:20:30 - ECU_engine - INFO - ECU engine stopped
+2025-07-30 09:20:30 - ECU_body - INFO - ECU body stopped
+2025-07-30 09:20:30 - ECU_brake - INFO - ECU brake stopped
+2025-07-30 09:20:30 - ECU_steering - INFO - ECU steering stopped
+2025-07-30 09:20:30 - ECU_transmission - INFO - ECU transmission stopped
+2025-07-30 09:20:30 - ramn.can_simulation - INFO - CAN bus stopped
+2025-07-30 09:20:30 - ramn.can_simulation - INFO - Vehicle CAN simulation stopped
+2025-07-30 09:21:19 - gemini_agent - WARNING - Gemini AI not available - using fallback mode
+2025-07-30 09:21:19 - ramn.can_simulation - INFO - Added ECU: engine
+2025-07-30 09:21:19 - ramn.can_simulation - INFO - Added ECU: body
+2025-07-30 09:21:19 - ramn.can_simulation - INFO - Added ECU: brake
+2025-07-30 09:21:19 - ramn.can_simulation - INFO - Added ECU: steering
+2025-07-30 09:21:19 - ramn.can_simulation - INFO - Added ECU: transmission
+2025-07-30 09:21:20 - ECU_engine - INFO - ECU engine started
+2025-07-30 09:21:20 - ECU_body - INFO - ECU body started
+2025-07-30 09:21:20 - ECU_brake - INFO - ECU brake started
+2025-07-30 09:21:20 - ECU_steering - INFO - ECU steering started
+2025-07-30 09:21:20 - ECU_transmission - INFO - ECU transmission started
+2025-07-30 09:21:20 - ramn.can_simulation - INFO - CAN bus started
+2025-07-30 09:21:20 - ramn.can_simulation - INFO - Vehicle CAN simulation started
+2025-07-30 09:22:18 - ECU_engine - INFO - ECU engine stopped
+2025-07-30 09:22:18 - ECU_body - INFO - ECU body stopped
+2025-07-30 09:22:18 - ECU_brake - INFO - ECU brake stopped
+2025-07-30 09:22:18 - ECU_steering - INFO - ECU steering stopped
+2025-07-30 09:22:18 - ECU_transmission - INFO - ECU transmission stopped
+2025-07-30 09:22:18 - ramn.can_simulation - INFO - CAN bus stopped
+2025-07-30 09:22:18 - ramn.can_simulation - INFO - Vehicle CAN simulation stopped
+2025-07-30 09:28:05 - gemini_agent - WARNING - Gemini AI not available - using fallback mode
+2025-07-30 09:28:05 - ramn.can_simulation - INFO - Added ECU: engine
+2025-07-30 09:28:05 - ramn.can_simulation - INFO - Added ECU: body
+2025-07-30 09:28:05 - ramn.can_simulation - INFO - Added ECU: brake
+2025-07-30 09:28:05 - ramn.can_simulation - INFO - Added ECU: steering
+2025-07-30 09:28:05 - ramn.can_simulation - INFO - Added ECU: transmission
+2025-07-30 09:28:05 - ECU_engine - INFO - ECU engine started
+2025-07-30 09:28:05 - ECU_body - INFO - ECU body started
+2025-07-30 09:28:05 - ECU_brake - INFO - ECU brake started
+2025-07-30 09:28:05 - ECU_steering - INFO - ECU steering started
+2025-07-30 09:28:05 - ECU_transmission - INFO - ECU transmission started
+2025-07-30 09:28:05 - ramn.can_simulation - INFO - CAN bus started
+2025-07-30 09:28:05 - ramn.can_simulation - INFO - Vehicle CAN simulation started
+2025-07-30 09:28:19 - ECU_engine - INFO - ECU engine stopped
+2025-07-30 09:28:19 - ECU_body - INFO - ECU body stopped
+2025-07-30 09:28:19 - ECU_brake - INFO - ECU brake stopped
+2025-07-30 09:28:19 - ECU_steering - INFO - ECU steering stopped
+2025-07-30 09:28:19 - ECU_transmission - INFO - ECU transmission stopped
+2025-07-30 09:28:19 - ramn.can_simulation - INFO - CAN bus stopped
+2025-07-30 09:28:19 - ramn.can_simulation - INFO - Vehicle CAN simulation stopped
+2025-07-30 09:32:01 - gemini_agent - WARNING - Gemini AI not available - using fallback mode
+2025-07-30 09:32:01 - ramn.can_simulation - INFO - Added ECU: engine
+2025-07-30 09:32:01 - ramn.can_simulation - INFO - Added ECU: body
+2025-07-30 09:32:01 - ramn.can_simulation - INFO - Added ECU: brake
+2025-07-30 09:32:01 - ramn.can_simulation - INFO - Added ECU: steering
+2025-07-30 09:32:01 - ramn.can_simulation - INFO - Added ECU: transmission
+2025-07-30 09:32:01 - ECU_engine - INFO - ECU engine started
+2025-07-30 09:32:01 - ECU_body - INFO - ECU body started
+2025-07-30 09:32:01 - ECU_brake - INFO - ECU brake started
+2025-07-30 09:32:01 - ECU_steering - INFO - ECU steering started
+2025-07-30 09:32:01 - ECU_transmission - INFO - ECU transmission started
+2025-07-30 09:32:01 - ramn.can_simulation - INFO - CAN bus started
+2025-07-30 09:32:01 - ramn.can_simulation - INFO - Vehicle CAN simulation started
+2025-07-30 09:32:10 - ECU_engine - INFO - ECU engine stopped
+2025-07-30 09:32:10 - ECU_body - INFO - ECU body stopped
+2025-07-30 09:32:10 - ECU_brake - INFO - ECU brake stopped
+2025-07-30 09:32:10 - ECU_steering - INFO - ECU steering stopped
+2025-07-30 09:32:10 - ECU_transmission - INFO - ECU transmission stopped
+2025-07-30 09:32:10 - ramn.can_simulation - INFO - CAN bus stopped
+2025-07-30 09:32:10 - ramn.can_simulation - INFO - Vehicle CAN simulation stopped
+2025-07-30 09:40:13 - gemini_agent - WARNING - Gemini AI not available - using fallback mode
+2025-07-30 09:40:13 - ramn.can_simulation - INFO - Added ECU: engine
+2025-07-30 09:40:13 - ramn.can_simulation - INFO - Added ECU: body
+2025-07-30 09:40:13 - ramn.can_simulation - INFO - Added ECU: brake
+2025-07-30 09:40:13 - ramn.can_simulation - INFO - Added ECU: steering
+2025-07-30 09:40:13 - ramn.can_simulation - INFO - Added ECU: transmission
+2025-07-30 09:40:14 - ECU_engine - INFO - ECU engine started
+2025-07-30 09:40:14 - ECU_body - INFO - ECU body started
+2025-07-30 09:40:14 - ECU_brake - INFO - ECU brake started
+2025-07-30 09:40:14 - ECU_steering - INFO - ECU steering started
+2025-07-30 09:40:14 - ECU_transmission - INFO - ECU transmission started
+2025-07-30 09:40:14 - ramn.can_simulation - INFO - CAN bus started
+2025-07-30 09:40:14 - ramn.can_simulation - INFO - Vehicle CAN simulation started
+2025-07-30 09:40:22 - ECU_engine - INFO - ECU engine stopped
+2025-07-30 09:40:22 - ECU_body - INFO - ECU body stopped
+2025-07-30 09:40:22 - ECU_brake - INFO - ECU brake stopped
+2025-07-30 09:40:22 - ECU_steering - INFO - ECU steering stopped
+2025-07-30 09:40:22 - ECU_transmission - INFO - ECU transmission stopped
+2025-07-30 09:40:22 - ramn.can_simulation - INFO - CAN bus stopped
+2025-07-30 09:40:22 - ramn.can_simulation - INFO - Vehicle CAN simulation stopped
+2025-07-30 10:01:23 - gemini_agent - WARNING - Gemini AI not available - using fallback mode
+2025-07-30 10:01:23 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 10:01:33 - webots_overlay - INFO - Webots started with world: automobile.wbt
+2025-07-30 10:01:39 - webots_overlay - INFO - Webots started with world: automobile.wbt
+2025-07-30 10:12:14 - gemini_agent - ERROR - Failed to initialize Gemini AI: Google API key not configured
+2025-07-30 10:12:15 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 10:12:17 - webots_overlay - WARNING - Webots controller not active
+2025-07-30 10:12:18 - webots_overlay - WARNING - Webots controller not active
+2025-07-30 10:12:18 - webots_overlay - WARNING - Webots controller not active
+2025-07-30 10:12:18 - webots_overlay - WARNING - Webots controller not active
+2025-07-30 10:12:18 - webots_overlay - WARNING - Webots controller not active
+2025-07-30 10:12:19 - webots_overlay - WARNING - Webots controller not active
+2025-07-30 10:12:20 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:12:20 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe C:\carla-voice-commander\worlds\automobile.wbt
+2025-07-30 10:12:39 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:12:39 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe C:\carla-voice-commander\worlds\automobile.wbt
+2025-07-30 10:19:31 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 10:19:32 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 10:19:40 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:19:40 - webots_overlay - WARNING - World file not found: C:\carla-voice-commander\worlds\city.wbt, using default
+2025-07-30 10:19:40 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:19:57 - webots_overlay - INFO - Command sent: Move forward at 25 km/h
+2025-07-30 10:20:00 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:20:16 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:20:16 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:20:22 - webots_overlay - INFO - Command sent: Turn left
+2025-07-30 10:20:24 - webots_overlay - INFO - Command sent: Move forward at 25 km/h
+2025-07-30 10:20:26 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:20:29 - webots_overlay - INFO - Command sent: Move forward at 10 km/h
+2025-07-30 10:20:30 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:20:30 - webots_overlay - INFO - Command sent: Turn left
+2025-07-30 10:20:31 - webots_overlay - INFO - Command sent: Turn left
+2025-07-30 10:20:31 - webots_overlay - INFO - Command sent: Turn left
+2025-07-30 10:20:40 - webots_overlay - INFO - Command sent: Turn left
+2025-07-30 10:20:41 - webots_overlay - INFO - Command sent: Turn right
+2025-07-30 10:20:41 - webots_overlay - INFO - Command sent: Move backward at 15 km/h
+2025-07-30 10:20:41 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:20:42 - webots_overlay - INFO - Command sent: Turn right
+2025-07-30 10:20:42 - webots_overlay - INFO - Command sent: Move backward at 15 km/h
+2025-07-30 10:20:42 - webots_overlay - INFO - Command sent: Turn left
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 11 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 12 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 13 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 14 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 15 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 16 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 17 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 18 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 19 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 20 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 21 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 22 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 23 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 24 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 25 km/h
+2025-07-30 10:20:48 - webots_overlay - INFO - Command sent: Move forward at 26 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 27 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 28 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 29 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 30 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 31 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 32 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 33 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 34 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 35 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 36 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 37 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 38 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 39 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 40 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 41 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 42 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 43 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 44 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 45 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 46 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 47 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 48 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 49 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 50 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 51 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 52 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 53 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 54 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 55 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 56 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 57 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 58 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 59 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 60 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 59 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 57 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 55 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 52 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 50 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 47 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 45 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 42 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 40 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 37 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 34 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 32 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 29 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 27 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 25 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 23 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 22 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 20 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 18 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 17 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 15 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 14 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 12 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 11 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 9 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 8 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 7 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 6 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 4 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 2 km/h
+2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 1 km/h
+2025-07-30 10:20:50 - webots_overlay - INFO - Command sent: Emergency stop

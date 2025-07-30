@@ -1,0 +1,260 @@
+#VRML_SIM R2023b utf8
+
+WorldInfo {
+  info [
+    "Voice Commander - Simple Automobile World"
+  ]
+  title "Voice Commander Automobile Simulation"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "wheel"
+      material2 "road"
+      coulombFriction [
+        0.8
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.267 0.534 0.802 1.147
+  position -2.832 -8.875 3.204
+  follow "vehicle"
+}
+Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+}
+DirectionalLight {
+  direction 0.1 -0.5 0.3
+}
+Solid {
+  translation 0 0 -0.1
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.8
+        metalness 0
+      }
+      geometry Box {
+        size 50 50 0.2
+      }
+    }
+  ]
+  name "ground"
+  boundingObject Box {
+    size 50 50 0.2
+  }
+}
+Robot {
+  translation 0 0 0.4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.1 0.1
+        metalness 0.3
+      }
+      geometry Box {
+        size 4 2 1
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -1.5 -1 -0.3
+      }
+      device [
+        RotationalMotor {
+          name "front_left_motor"
+        }
+      ]
+      endPoint Solid {
+        translation -1.5 -1 -0.3
+        rotation 0 1 0 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+            }
+            geometry Cylinder {
+              height 0.3
+              radius 0.4
+            }
+          }
+        ]
+        boundingObject Cylinder {
+          height 0.3
+          radius 0.4
+        }
+        physics Physics {
+          density -1
+          mass 1
+        }
+        name "front_left_wheel"
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -1.5 1 -0.3
+      }
+      device [
+        RotationalMotor {
+          name "front_right_motor"
+        }
+      ]
+      endPoint Solid {
+        translation -1.5 1 -0.3
+        rotation 0 1 0 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+            }
+            geometry Cylinder {
+              height 0.3
+              radius 0.4
+            }
+          }
+        ]
+        boundingObject Cylinder {
+          height 0.3
+          radius 0.4
+        }
+        physics Physics {
+          density -1
+          mass 1
+        }
+        name "front_right_wheel"
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 1.5 -1 -0.3
+      }
+      device [
+        RotationalMotor {
+          name "rear_left_motor"
+        }
+      ]
+      endPoint Solid {
+        translation 1.5 -1 -0.3
+        rotation 0 1 0 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+            }
+            geometry Cylinder {
+              height 0.3
+              radius 0.4
+            }
+          }
+        ]
+        boundingObject Cylinder {
+          height 0.3
+          radius 0.4
+        }
+        physics Physics {
+          density -1
+          mass 1
+        }
+        name "rear_left_wheel"
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 1.5 1 -0.3
+      }
+      device [
+        RotationalMotor {
+          name "rear_right_motor"
+        }
+      ]
+      endPoint Solid {
+        translation 1.5 1 -0.3
+        rotation 0 1 0 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+            }
+            geometry Cylinder {
+              height 0.3
+              radius 0.4
+            }
+          }
+        ]
+        boundingObject Cylinder {
+          height 0.3
+          radius 0.4
+        }
+        physics Physics {
+          density -1
+          mass 1
+        }
+        name "rear_right_wheel"
+      }
+    }
+    GPS {
+      name "gps"
+    }
+    Camera {
+      translation 2 0 0.5
+      name "front_camera"
+      width 640
+      height 480
+    }
+    Compass {
+      name "compass"
+    }
+    DistanceSensor {
+      translation 2 0 0
+      name "front_sensor"
+      lookupTable [
+        0 0 0
+        5 5 0
+      ]
+    }
+    DistanceSensor {
+      translation -2 0 0
+      rotation 0 0 1 3.14159
+      name "rear_sensor"
+      lookupTable [
+        0 0 0
+        5 5 0
+      ]
+    }
+    DistanceSensor {
+      translation 0 -1.2 0
+      rotation 0 0 1 -1.5708
+      name "left_sensor"
+      lookupTable [
+        0 0 0
+        5 5 0
+      ]
+    }
+    DistanceSensor {
+      translation 0 1.2 0
+      rotation 0 0 1 1.5708
+      name "right_sensor"
+      lookupTable [
+        0 0 0
+        5 5 0
+      ]
+    }
+  ]
+  name "vehicle"
+  boundingObject Box {
+    size 4 2 1
+  }
+  physics Physics {
+    density -1
+    mass 1500
+  }
+  controller "webots_controller"
+}
