@@ -21,7 +21,15 @@ from PyQt5.QtGui import QFont, QPainter, QPen, QColor, QBrush, QPixmap
 # Import project modules
 from config import Config
 from utils.logger import Logger
-from gemini_agent import GeminiAgent
+
+# Try to import GeminiAgent, but make it optional
+try:
+    from gemini_agent import GeminiAgent
+    GEMINI_AVAILABLE = True
+except ImportError:
+    print("⚠️ GeminiAgent not available - AI features disabled")
+    GeminiAgent = None
+    GEMINI_AVAILABLE = False
 
 class WebotsControllerInterface(QObject):
     """Interface to communicate with Webots controller"""
@@ -45,14 +53,17 @@ class WebotsControllerInterface(QObject):
         }
         
         # Initialize AI
-        self.gemini_agent = GeminiAgent()
+        if GEMINI_AVAILABLE:
+            self.gemini_agent = GeminiAgent()
+        else:
+            self.gemini_agent = None
         
         # Update timer
         self.update_timer = QTimer()
         self.update_timer.timeout.connect(self.update_status)
         self.update_timer.start(100)  # 10 FPS
     
-    def start_webots(self, world_file: str = "automobile_simple.wbt"):
+    def start_webots(self, world_file: str = "highway_bmw.wbt"):
         """Start Webots with specified world file"""
         try:
             webots_path = self._find_webots_executable()
@@ -73,7 +84,7 @@ class WebotsControllerInterface(QObject):
                            "• C:\\Program Files (x86)\\Webots\\\n"
                            "• System PATH\n\n"
                            "💡 Alternative: Run Webots manually and load:\n"
-                           f"   {os.path.abspath('worlds/automobile_simple.wbt')}")
+                           f"   {os.path.abspath('worlds/city_bmw.wbt')}")
                 msg.exec_()
                 return False
             
@@ -215,6 +226,27 @@ class WebotsControllerInterface(QObject):
         """Process AI command"""
         self.logger.info(f"Processing AI command: {command_text}")
         
+        if not self.gemini_agent:
+            self.logger.warning("Gemini AI not available - using simple command parsing")
+            # Simple fallback command processing
+            command_text = command_text.lower()
+            if 'forward' in command_text or 'ahead' in command_text:
+                command = {'action': 'move_forward', 'speed': 25}
+            elif 'back' in command_text or 'reverse' in command_text:
+                command = {'action': 'move_backward', 'speed': 15}
+            elif 'left' in command_text:
+                command = {'action': 'turn_left'}
+            elif 'right' in command_text:
+                command = {'action': 'turn_right'}
+            elif 'stop' in command_text:
+                command = {'action': 'stop'}
+            else:
+                self.logger.warning(f"Unknown command: {command_text}")
+                return
+            
+            self.send_command(command)
+            return
+        
         # Get AI response
         response = self.gemini_agent.process_command(command_text, {}, self.vehicle_state)
         
@@ -269,7 +301,7 @@ class ControlOverlay(QFrame):
     
     def __init__(self):
         super().__init__()
-        self.setFixedSize(350, 500)
+        self.setFixedSize(400, 650)  # Made wider and taller
         self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setStyleSheet("""
@@ -283,9 +315,11 @@ class ControlOverlay(QFrame):
                 color: black;
                 border: 1px solid gray;
                 border-radius: 8px;
-                padding: 10px;
+                padding: 12px;
                 font-weight: bold;
                 font-size: 12px;
+                min-height: 45px;
+                margin: 3px;
             }
             QPushButton:hover {
                 background: rgba(220, 220, 220, 200);
@@ -298,6 +332,7 @@ class ControlOverlay(QFrame):
                 color: black;
                 font-weight: bold;
                 font-size: 11px;
+                margin: 2px;
             }
             QLineEdit {
                 background: rgba(250, 250, 250, 200);
@@ -306,6 +341,19 @@ class ControlOverlay(QFrame):
                 color: black;
                 padding: 8px;
                 font-size: 11px;
+                margin: 2px;
+            }
+            QGroupBox {
+                font-weight: bold;
+                border: 2px solid gray;
+                border-radius: 8px;
+                margin: 5px;
+                padding-top: 15px;
+            }
+            QGroupBox::title {
+                subcontrol-origin: margin;
+                left: 10px;
+                padding: 0 5px 0 5px;
             }
             QSlider::groove:horizontal {
                 background: rgba(255, 255, 255, 100);
@@ -323,6 +371,7 @@ class ControlOverlay(QFrame):
                 border-radius: 5px;
                 color: #ffffff;
                 padding: 5px;
+                margin: 2px;
             }
         """)
         self.init_ui()
@@ -330,40 +379,50 @@ class ControlOverlay(QFrame):
     
     def init_ui(self):
         layout = QVBoxLayout()
-        layout.setContentsMargins(15, 15, 15, 15)
+        layout.setContentsMargins(20, 20, 20, 20)
+        layout.setSpacing(10)
         
         # Title
         title = QLabel("🚗 WEBOTS VEHICLE CONTROL")
         title.setAlignment(Qt.AlignCenter)
-        title.setStyleSheet("color: black; font-size: 14px; font-weight: bold;")
+        title.setStyleSheet("color: black; font-size: 16px; font-weight: bold; margin: 10px;")
         layout.addWidget(title)
         
         # Webots status
         self.webots_status = QLabel("🔴 Webots: Disconnected")
         self.webots_status.setAlignment(Qt.AlignCenter)
+        self.webots_status.setStyleSheet("font-size: 12px; margin: 5px;")
         layout.addWidget(self.webots_status)
         
         # Start/Stop Webots
-        webots_controls = QHBoxLayout()
+        webots_group = QGroupBox("🚀 Webots Control")
+        webots_layout = QHBoxLayout()
+        webots_layout.setSpacing(10)
+        
         self.start_btn = QPushButton("🚀 Start Webots")
         self.start_btn.clicked.connect(self.start_webots)
         self.stop_btn = QPushButton("🛑 Stop Webots")
         self.stop_btn.clicked.connect(self.stop_webots)
-        webots_controls.addWidget(self.start_btn)
-        webots_controls.addWidget(self.stop_btn)
-        layout.addLayout(webots_controls)
+        webots_layout.addWidget(self.start_btn)
+        webots_layout.addWidget(self.stop_btn)
+        
+        webots_group.setLayout(webots_layout)
+        layout.addWidget(webots_group)
         
         # AI Command input
         ai_group = QGroupBox("🤖 AI Commands")
         ai_layout = QVBoxLayout()
+        ai_layout.setSpacing(8)
         
         self.command_input = QLineEdit()
         self.command_input.setPlaceholderText("'drive forward', 'turn left', 'park'...")
         self.command_input.returnPressed.connect(self.send_ai_command)
+        self.command_input.setMinimumHeight(35)
         ai_layout.addWidget(self.command_input)
         
         ai_btn = QPushButton("🧠 Send AI Command")
         ai_btn.clicked.connect(self.send_ai_command)
+        ai_btn.setMinimumHeight(45)
         ai_layout.addWidget(ai_btn)
         
         ai_group.setLayout(ai_layout)
@@ -371,23 +430,54 @@ class ControlOverlay(QFrame):
         
         # Manual controls
         manual_group = QGroupBox("🎮 Manual Controls")
-        manual_layout = QGridLayout()
+        manual_layout = QVBoxLayout()
+        manual_layout.setSpacing(8)
         
-        # Movement controls
-        controls = [
+        # Movement controls in rows to prevent overlap
+        movement_controls = [
             ("⬆️ Forward", {"action": "move_forward", "speed": 25}),
             ("⬇️ Reverse", {"action": "move_backward", "speed": 15}),
-            ("⬅️ Left", {"action": "turn_left"}),
-            ("➡️ Right", {"action": "turn_right"}),
-            ("🛑 Stop", {"action": "stop"}),
-            ("🅿️ Park", {"action": "park"})
         ]
         
-        for i, (label, cmd) in enumerate(controls):
+        # First row - Forward/Reverse
+        movement_row1 = QHBoxLayout()
+        movement_row1.setSpacing(10)
+        for label, cmd in movement_controls:
             btn = QPushButton(label)
-            btn.setFixedHeight(40)
+            btn.setMinimumHeight(50)
             btn.clicked.connect(lambda checked, command=cmd: self.command_signal.emit(command))
-            manual_layout.addWidget(btn, i // 2, i % 2)
+            movement_row1.addWidget(btn)
+        manual_layout.addLayout(movement_row1)
+        
+        # Second row - Left/Right
+        turning_controls = [
+            ("⬅️ Left", {"action": "turn_left"}),
+            ("➡️ Right", {"action": "turn_right"}),
+        ]
+        
+        movement_row2 = QHBoxLayout()
+        movement_row2.setSpacing(10)
+        for label, cmd in turning_controls:
+            btn = QPushButton(label)
+            btn.setMinimumHeight(50)
+            btn.clicked.connect(lambda checked, command=cmd: self.command_signal.emit(command))
+            movement_row2.addWidget(btn)
+        manual_layout.addLayout(movement_row2)
+        
+        # Third row - Stop/Park
+        action_controls = [
+            ("🛑 Stop", {"action": "stop"}),
+            ("🅿️ Park", {"action": "park"}),
+        ]
+        
+        movement_row3 = QHBoxLayout()
+        movement_row3.setSpacing(10)
+        for label, cmd in action_controls:
+            btn = QPushButton(label)
+            btn.setMinimumHeight(50)
+            btn.clicked.connect(lambda checked, command=cmd: self.command_signal.emit(command))
+            movement_row3.addWidget(btn)
+        manual_layout.addLayout(movement_row3)
         
         manual_group.setLayout(manual_layout)
         layout.addWidget(manual_group)
@@ -395,15 +485,18 @@ class ControlOverlay(QFrame):
         # Speed control
         speed_group = QGroupBox("⚡ Speed Control")
         speed_layout = QVBoxLayout()
+        speed_layout.setSpacing(8)
         
         self.speed_slider = QSlider(Qt.Horizontal)
         self.speed_slider.setRange(0, 60)
         self.speed_slider.setValue(0)
         self.speed_slider.valueChanged.connect(self.speed_changed)
+        self.speed_slider.setMinimumHeight(30)
         speed_layout.addWidget(self.speed_slider)
         
         self.speed_label = QLabel("Speed: 0 km/h")
         self.speed_label.setAlignment(Qt.AlignCenter)
+        self.speed_label.setStyleSheet("font-size: 12px; margin: 5px;")
         speed_layout.addWidget(self.speed_label)
         
         speed_group.setLayout(speed_layout)
@@ -412,14 +505,17 @@ class ControlOverlay(QFrame):
         # World selection
         world_group = QGroupBox("🌍 World Selection")
         world_layout = QVBoxLayout()
+        world_layout.setSpacing(8)
+        
+        world_label = QLabel("Current World:")
+        world_label.setStyleSheet("font-size: 11px;")
+        world_layout.addWidget(world_label)
         
         self.world_combo = QComboBox()
         self.world_combo.addItems([
-            "automobile_simple.wbt",
-            "city.wbt", 
-            "highway.wbt",
-            "test_track.wbt"
+            "highway_bmw.wbt"
         ])
+        self.world_combo.setMinimumHeight(35)
         world_layout.addWidget(self.world_combo)
         
         world_group.setLayout(world_layout)
@@ -428,13 +524,16 @@ class ControlOverlay(QFrame):
         # Close button
         close_btn = QPushButton("✖️ Close Overlay")
         close_btn.clicked.connect(self.close)
+        close_btn.setMinimumHeight(45)
         close_btn.setStyleSheet("""
             QPushButton {
-                background: rgba(255, 50, 50, 200);
+                background: rgba(255, 80, 80, 200);
                 color: white;
+                font-weight: bold;
+                margin: 5px;
             }
             QPushButton:hover {
-                background: rgba(255, 50, 50, 255);
+                background: rgba(255, 80, 80, 255);
             }
         """)
         layout.addWidget(close_btn)
@@ -495,19 +594,33 @@ class StatusOverlay(QFrame):
     
     def __init__(self):
         super().__init__()
-        self.setFixedSize(300, 250)
+        self.setFixedSize(350, 300)  # Made slightly larger
         self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setStyleSheet("""
             QFrame {
                 background: rgba(255, 255, 255, 230);
                 border: 2px solid rgba(100, 100, 100, 150);
-                border-radius: 10px;
+                border-radius: 15px;
             }
             QLabel {
                 color: black;
                 font-weight: bold;
-                font-size: 11px;
+                font-size: 12px;
+                margin: 3px;
+                padding: 5px;
+            }
+            QGroupBox {
+                font-weight: bold;
+                border: 2px solid gray;
+                border-radius: 8px;
+                margin: 5px;
+                padding-top: 15px;
+            }
+            QGroupBox::title {
+                subcontrol-origin: margin;
+                left: 10px;
+                padding: 0 5px 0 5px;
             }
         """)
         self.init_ui()
@@ -515,13 +628,19 @@ class StatusOverlay(QFrame):
     
     def init_ui(self):
         layout = QVBoxLayout()
-        layout.setContentsMargins(15, 15, 15, 15)
+        layout.setContentsMargins(20, 20, 20, 20)
+        layout.setSpacing(10)
         
         # Title
         title = QLabel("📊 VEHICLE STATUS")
         title.setAlignment(Qt.AlignCenter)
-        title.setStyleSheet("color: black; font-size: 13px; font-weight: bold;")
+        title.setStyleSheet("color: black; font-size: 16px; font-weight: bold; margin: 10px;")
         layout.addWidget(title)
+        
+        # Status group
+        status_group = QGroupBox("🚗 Live Vehicle Data")
+        status_layout = QVBoxLayout()
+        status_layout.setSpacing(5)
         
         # Status labels
         self.status_labels = {}
@@ -530,14 +649,17 @@ class StatusOverlay(QFrame):
             ("position", "📍 Position: (0.0, 0.0)"),
             ("orientation", "🧭 Heading: 0°"),
             ("gear", "⚙️ Gear: P"),
-            ("rpm", "🔧 RPM: 0"),
             ("connection", "🔗 Status: Disconnected")
         ]
         
         for key, initial in status_items:
             label = QLabel(initial)
+            label.setStyleSheet("background: rgba(245, 245, 245, 150); border-radius: 5px; padding: 8px;")
             self.status_labels[key] = label
-            layout.addWidget(label)
+            status_layout.addWidget(label)
+        
+        status_group.setLayout(status_layout)
+        layout.addWidget(status_group)
         
         self.setLayout(layout)
     
@@ -631,7 +753,7 @@ class WebotsOverlayApp(QMainWindow):
         print(f"🎮 Overlay received command: {command}")  # Debug output
         
         if action == 'start_webots':
-            world = command.get('world', 'automobile_simple.wbt')
+            world = command.get('world', 'highway_bmw.wbt')
             success = self.webots_interface.start_webots(world)
             self.control_overlay.update_webots_status(success)
         elif action == 'stop_webots':

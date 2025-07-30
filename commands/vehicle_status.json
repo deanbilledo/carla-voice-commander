@@ -1,1 +1,18 @@
-{"connected": true, "position": {"x": 0.005887097238636314, "y": -1.062176116849796e-15, "z": 0.4353441763097901}, "orientation": {"roll": 0.0, "pitch": 0.0, "yaw": 6.205999775506871e-14}, "speed_kmh": 20.0, "gear": "D", "target_speed": 20.0, "timestamp": 1753842889.0751705}
+{
+  "connected": true,
+  "position": {
+    "x": 0.006155796208448194,
+    "y": -0.0598040980960719,
+    "z": -1735704.3779666151
+  },
+  "orientation": {
+    "roll": 0.0,
+    "pitch": 0.0,
+    "yaw": 2.500271819211895
+  },
+  "speed_kmh": 9.566747394273988e-13,
+  "gear": "P",
+  "target_speed": 0.0,
+  "steering_angle": 0.0,
+  "timestamp": 1753844820.2323408
+}

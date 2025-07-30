@@ -262,3 +262,79 @@
 2025-07-30 10:34:47 - webots_overlay - INFO - Command sent: Emergency stop
 2025-07-30 10:34:47 - webots_overlay - INFO - Command sent: Emergency stop
 2025-07-30 10:34:49 - webots_overlay - INFO - Webots simulation stopped
+2025-07-30 10:41:06 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 10:41:07 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 10:41:16 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:41:16 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe C:\carla-voice-commander\worlds\automobile_simple.wbt
+2025-07-30 10:41:33 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:41:33 - webots_overlay - WARNING - World file not found: C:\carla-voice-commander\worlds\city.wbt, using default
+2025-07-30 10:41:33 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:41:52 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:41:52 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:41:54 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:41:54 - webots_overlay - INFO - Webots simulation stopped
+2025-07-30 10:52:27 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 10:52:27 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 10:52:30 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:52:30 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe C:\carla-voice-commander\worlds\city_bmw.wbt
+2025-07-30 10:52:47 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:52:47 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:52:48 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:57:18 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 10:57:18 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 10:57:23 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:57:23 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe C:\carla-voice-commander\worlds\highway_bmw.wbt
+2025-07-30 10:58:07 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:58:07 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:58:14 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:58:14 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:58:15 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:58:15 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:58:15 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:58:15 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:58:15 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:58:16 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:58:16 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 11:02:33 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 11:02:34 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 11:02:38 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 11:02:38 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe C:\carla-voice-commander\worlds\highway_bmw.wbt
+2025-07-30 11:03:26 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 11:03:26 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 11:03:26 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 11:03:26 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 11:03:27 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 11:03:28 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 11:03:57 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 11:04:14 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 11:04:14 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 11:04:20 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 11:04:20 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 11:04:20 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 11:04:21 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 11:04:21 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 11:04:21 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 11:04:21 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 11:04:21 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 11:04:21 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 11:04:44 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 11:04:54 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 11:04:54 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe C:\carla-voice-commander\worlds\automobile_simple.wbt
+2025-07-30 11:05:00 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 11:05:00 - webots_overlay - WARNING - World file not found: C:\carla-voice-commander\worlds\city.wbt, using default
+2025-07-30 11:05:00 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 11:05:09 - webots_overlay - INFO - Webots simulation stopped
+2025-07-30 11:05:18 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 11:05:18 - webots_overlay - WARNING - World file not found: C:\carla-voice-commander\worlds\highway.wbt, using default
+2025-07-30 11:05:18 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 11:05:24 - webots_overlay - INFO - Webots simulation stopped
+2025-07-30 11:12:47 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 11:12:47 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 11:12:53 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 11:12:53 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 11:14:09 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 11:14:09 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 12:08:48 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 12:08:49 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 12:09:03 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 12:09:04 - webots_overlay - INFO - Webots overlay application started

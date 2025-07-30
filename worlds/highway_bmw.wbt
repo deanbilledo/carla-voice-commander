@@ -1,0 +1,80 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/StraightRoadSegment.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/bmw/BmwX5.proto"
+
+WorldInfo {
+  ERP 0.6
+  basicTimeStep 10
+  contactProperties [
+    ContactProperties {
+      coulombFriction [
+        8
+      ]
+      softCFM 1e-05
+    }
+  ]
+}
+
+Viewpoint {
+  orientation -0.14640603253738602 0.1518264433568063 0.977359983850533 1.6171968063598324
+  position 15.45698 15.26859 8.87632
+  near 1
+  follow "vehicle"
+  followSmoothness 0
+}
+
+TexturedBackground {
+}
+
+TexturedBackgroundLight {
+}
+
+Floor {
+  size 200 200
+  tileSize 5 5
+}
+
+StraightRoadSegment {
+  translation 0 0 0.02
+  width 12
+  numberOfLanes 3
+  speedLimit 60
+  length 150
+}
+
+StraightRoadSegment {
+  translation 0 -40 0.02
+  rotation 0 0 1 1.5708
+  name "road2"
+  width 12
+  numberOfLanes 3
+  speedLimit 60
+  length 150
+}
+
+DEF WEBOTS_VEHICLE0 BmwX5 {
+  translation 0 0 0.4
+  name "vehicle"
+  controller "bmw_controller"
+  sensorsSlotTop [
+    Camera {
+      translation 0.72 0 -0.05
+      name "camera"
+      fieldOfView 1
+      width 640
+      height 480
+    }
+  ]
+  sensorsSlotCenter [
+    GPS {
+      name "gps"
+    }
+    Compass {
+      name "compass"
+    }
+  ]
+}
