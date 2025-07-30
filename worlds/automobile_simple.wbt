@@ -17,24 +17,28 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.267 0.534 0.802 1.147
-  position -2.832 -8.875 3.204
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0943951023931953
+  position 5 5 5
   follow "vehicle"
+  followType "Pan and Tilt Shot"
 }
 Background {
   skyColor [
     0.4 0.7 1
   ]
+  luminosity 1.0
 }
 DirectionalLight {
   direction 0.1 -0.5 0.3
+  intensity 1.0
+  castShadows TRUE
 }
 Solid {
   translation 0 0 -0.1
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
+        baseColor 0.4 0.6 0.4
         roughness 0.8
         metalness 0
       }
@@ -47,6 +51,52 @@ Solid {
   boundingObject Box {
     size 50 50 0.2
   }
+}
+# Add some visual landmarks
+Solid {
+  translation 10 0 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        metalness 0.2
+      }
+      geometry Box {
+        size 2 2 1
+      }
+    }
+  ]
+  name "landmark1"
+}
+Solid {
+  translation -10 0 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        metalness 0.2
+      }
+      geometry Box {
+        size 2 2 1
+      }
+    }
+  ]
+  name "landmark2"
+}
+Solid {
+  translation 0 10 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        metalness 0.2
+      }
+      geometry Box {
+        size 2 2 1
+      }
+    }
+  ]
+  name "landmark3"
 }
 Robot {
   translation 0 0 0.4
@@ -68,6 +118,7 @@ Robot {
       device [
         RotationalMotor {
           name "front_left_motor"
+          maxVelocity 20
         }
       ]
       endPoint Solid {
@@ -103,6 +154,7 @@ Robot {
       device [
         RotationalMotor {
           name "front_right_motor"
+          maxVelocity 20
         }
       ]
       endPoint Solid {
@@ -138,6 +190,7 @@ Robot {
       device [
         RotationalMotor {
           name "rear_left_motor"
+          maxVelocity 20
         }
       ]
       endPoint Solid {
@@ -173,6 +226,7 @@ Robot {
       device [
         RotationalMotor {
           name "rear_right_motor"
+          maxVelocity 20
         }
       ]
       endPoint Solid {
@@ -205,7 +259,7 @@ Robot {
     }
     Camera {
       translation 2 0 0.5
-      name "front_camera"
+      name "camera"
       width 640
       height 480
     }

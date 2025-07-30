@@ -220,3 +220,45 @@
 2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 2 km/h
 2025-07-30 10:20:49 - webots_overlay - INFO - Command sent: Move forward at 1 km/h
 2025-07-30 10:20:50 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:24:49 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 10:24:49 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:24:49 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe C:\carla-voice-commander\worlds\automobile_simple.wbt
+2025-07-30 10:25:00 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:29:22 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 10:29:22 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 10:29:28 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:29:28 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe C:\carla-voice-commander\worlds\automobile_simple.wbt
+2025-07-30 10:29:41 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:29:41 - webots_overlay - WARNING - World file not found: C:\carla-voice-commander\worlds\city.wbt, using default
+2025-07-30 10:29:41 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:29:56 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:29:56 - webots_overlay - WARNING - World file not found: C:\carla-voice-commander\worlds\highway.wbt, using default
+2025-07-30 10:29:56 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:30:30 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:30:30 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:30:30 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:30:31 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:30:31 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:30:31 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:30:32 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:30:44 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:30:45 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:30:46 - webots_overlay - INFO - Webots simulation stopped
+2025-07-30 10:34:10 - gemini_agent - INFO - Gemini AI initialized successfully
+2025-07-30 10:34:10 - webots_overlay - INFO - Webots overlay application started
+2025-07-30 10:34:18 - webots_overlay - INFO - Found Webots at: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:34:18 - webots_overlay - WARNING - World file not found: C:\carla-voice-commander\worlds\city.wbt, using default
+2025-07-30 10:34:18 - webots_overlay - INFO - Starting Webots: C:\Program Files\Webots\msys64\mingw64\bin\webots.exe
+2025-07-30 10:34:43 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:34:44 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:34:44 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:34:44 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:34:44 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:34:45 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:34:46 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:34:46 - webots_overlay - INFO - Command sent: Park vehicle
+2025-07-30 10:34:46 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:34:47 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:34:47 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:34:47 - webots_overlay - INFO - Command sent: Emergency stop
+2025-07-30 10:34:49 - webots_overlay - INFO - Webots simulation stopped

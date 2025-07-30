@@ -50,6 +50,11 @@ class WebotsVehicleController:
         self.target_speed = 0.0
         self.steering_angle = 0.0
         
+        # Command file paths
+        self.command_file = os.path.join(parent_dir, "commands", "current_command.json")
+        self.status_file = os.path.join(parent_dir, "commands", "vehicle_status.json")
+        self.last_command_time = 0
+        
         # Initialize sensors and actuators
         self._init_sensors()
         self._init_actuators()
@@ -94,33 +99,97 @@ class WebotsVehicleController:
         """Initialize vehicle actuators"""
         try:
             # Get wheel motors (for car-like vehicle)
-            self.left_front_motor = self.robot.getDevice('left_front_wheel')
-            self.right_front_motor = self.robot.getDevice('right_front_wheel')
-            self.left_rear_motor = self.robot.getDevice('left_rear_wheel')
-            self.right_rear_motor = self.robot.getDevice('right_rear_wheel')
+            self.front_left_motor = self.robot.getDevice('front_left_motor')
+            self.front_right_motor = self.robot.getDevice('front_right_motor')
+            self.rear_left_motor = self.robot.getDevice('rear_left_motor')
+            self.rear_right_motor = self.robot.getDevice('rear_right_motor')
             
-            # Set motors to velocity control
-            motors = [self.left_front_motor, self.right_front_motor, 
-                     self.left_rear_motor, self.right_rear_motor]
+            # Store all motors in a list for easy access
+            self.motors = [
+                self.front_left_motor,
+                self.front_right_motor, 
+                self.rear_left_motor,
+                self.rear_right_motor
+            ]
             
-            for motor in motors:
+            # Set motors to velocity control mode
+            for motor in self.motors:
                 if motor:
-                    motor.setPosition(float('inf'))
-                    motor.setVelocity(0.0)
+                    motor.setPosition(float('inf'))  # Set to velocity control
+                    motor.setVelocity(0.0)  # Start stationary
             
-            print("🔧 Wheel motors initialized")
-            
-            # Steering motors
-            self.left_steering_motor = self.robot.getDevice('left_steering_motor')
-            self.right_steering_motor = self.robot.getDevice('right_steering_motor')
-            
-            if self.left_steering_motor and self.right_steering_motor:
-                self.left_steering_motor.setPosition(0.0)
-                self.right_steering_motor.setPosition(0.0)
-                print("🎛️ Steering motors initialized")
+            print("🚗 Vehicle motors initialized:")
+            print(f"   Front Left: {'✅' if self.front_left_motor else '❌'}")
+            print(f"   Front Right: {'✅' if self.front_right_motor else '❌'}")
+            print(f"   Rear Left: {'✅' if self.rear_left_motor else '❌'}")
+            print(f"   Rear Right: {'✅' if self.rear_right_motor else '❌'}")
             
         except Exception as e:
-            print(f"❌ Actuator initialization error: {e}")
+            print(f"❌ Motor initialization error: {e}")
+    
+    def update_status_file(self):
+        """Write current vehicle status to file for overlay"""
+        try:
+            status_data = {
+                'connected': True,
+                'position': self.vehicle_state['position'],
+                'orientation': self.vehicle_state['orientation'],
+                'speed_kmh': self.vehicle_state['speed_kmh'],
+                'gear': self.vehicle_state['gear'],
+                'target_speed': self.target_speed * 3.6,  # Convert to km/h
+                'timestamp': time.time()
+            }
+            
+            with open(self.status_file, 'w') as f:
+                import json
+                json.dump(status_data, f)
+                
+        except Exception as e:
+            print(f"❌ Status file update error: {e}")
+    
+    def check_for_commands(self):
+        """Check for new commands from overlay"""
+        try:
+            if os.path.exists(self.command_file):
+                # Check if file was modified
+                file_time = os.path.getmtime(self.command_file)
+                if file_time > self.last_command_time:
+                    self.last_command_time = file_time
+                    
+                    # Read and process command
+                    with open(self.command_file, 'r') as f:
+                        import json
+                        command = json.load(f)
+                    
+                    print(f"📨 Received command: {command}")
+                    self.process_command(command)
+                    
+        except Exception as e:
+            print(f"❌ Command reading error: {e}")
+    
+    def process_command(self, command: dict):
+        """Process command from overlay"""
+        action = command.get('action', '')
+        
+        print(f"🎮 Processing command: {command}")
+        
+        if action == 'forward':
+            speed_kmh = command.get('speed', 20.0)
+            self.move_forward(speed_kmh)
+        elif action == 'backward':
+            speed_kmh = command.get('speed', 10.0)
+            self.move_backward(speed_kmh)
+        elif action == 'left':
+            self.turn_left(20.0)
+        elif action == 'right':
+            self.turn_right(20.0)
+        elif action == 'stop':
+            self.stop()
+        elif action == 'park':
+            self.stop()  # Same as stop for now
+            print("🅿️ Vehicle parked")
+        else:
+            print(f"❓ Unknown command action: {action}")
     
     def update_sensors(self):
         """Update sensor readings"""
@@ -168,20 +237,11 @@ class WebotsVehicleController:
         print(f"🚗 Target speed set to {speed_kmh:.1f} km/h")
     
     def set_steering(self, angle_degrees: float):
-        """Set steering angle in degrees"""
+        """Set steering angle in degrees (implemented via differential drive)"""
         # Convert to radians and clamp
         angle_rad = math.radians(max(-30, min(30, angle_degrees)))
         self.steering_angle = angle_rad
-        
-        try:
-            if hasattr(self, 'left_steering_motor') and self.left_steering_motor:
-                self.left_steering_motor.setPosition(angle_rad)
-            if hasattr(self, 'right_steering_motor') and self.right_steering_motor:
-                self.right_steering_motor.setPosition(angle_rad)
-            
-            print(f"🎛️ Steering set to {angle_degrees:.1f}°")
-        except Exception as e:
-            print(f"❌ Steering error: {e}")
+        print(f"🎛️ Steering set to {angle_degrees:.1f}° (differential drive)")
     
     def apply_motor_control(self):
         """Apply motor control based on current settings"""
@@ -200,16 +260,26 @@ class WebotsVehicleController:
                 self.current_speed = self.target_speed
             
             # Convert speed to wheel velocity
-            wheel_radius = 0.3  # meters
-            wheel_velocity = self.current_speed / wheel_radius
+            wheel_radius = 0.4  # meters (from world file)
+            base_velocity = self.current_speed / wheel_radius
+            
+            # Apply differential steering
+            steering_factor = 0.5  # How much steering affects differential
+            left_velocity = base_velocity + (self.steering_angle * steering_factor)
+            right_velocity = base_velocity - (self.steering_angle * steering_factor)
             
             # Apply to motors
-            motors = [self.left_front_motor, self.right_front_motor,
-                     self.left_rear_motor, self.right_rear_motor]
+            if self.front_left_motor:
+                self.front_left_motor.setVelocity(left_velocity)
+            if self.rear_left_motor:
+                self.rear_left_motor.setVelocity(left_velocity)
+            if self.front_right_motor:
+                self.front_right_motor.setVelocity(right_velocity)
+            if self.rear_right_motor:
+                self.rear_right_motor.setVelocity(right_velocity)
             
-            for motor in motors:
-                if motor:
-                    motor.setVelocity(wheel_velocity)
+        except Exception as e:
+            print(f"❌ Motor control error: {e}")
             
         except Exception as e:
             print(f"❌ Motor control error: {e}")
@@ -255,49 +325,43 @@ class WebotsVehicleController:
         self.vehicle_state['gear'] = 'P'
         print("🅿️ Vehicle parked")
     
-    def process_command(self, command: str):
-        """Process simple text commands"""
-        command = command.lower().strip()
-        
-        if 'forward' in command or 'ahead' in command:
-            self.move_forward(25.0)
-        elif 'backward' in command or 'reverse' in command:
-            self.move_backward(15.0)
-        elif 'left' in command:
-            self.turn_left(20.0)
-        elif 'right' in command:
-            self.turn_right(20.0)
-        elif 'stop' in command:
-            self.stop()
-        elif 'park' in command:
-            self.park()
-        elif 'fast' in command:
-            self.move_forward(40.0)
-        elif 'slow' in command:
-            self.move_forward(10.0)
-        else:
-            print(f"❓ Unknown command: {command}")
-    
     def run(self):
         """Main control loop"""
         print("🚀 Starting vehicle control loop...")
         
         step_count = 0
         
+        # Start with a simple test movement
+        print("🧪 Testing vehicle movement - moving forward for 3 seconds...")
+        self.move_forward(20.0)  # Move forward at 20 km/h
+        
         try:
             while self.robot.step(self.timestep) != -1:
+                # Check for new commands from overlay
+                self.check_for_commands()
+                
                 # Update sensors
                 self.update_sensors()
                 
                 # Apply motor control
                 self.apply_motor_control()
                 
+                # Update status file for overlay (every step for real-time updates)
+                self.update_status_file()
+                
+                # Stop test movement after 3 seconds
+                if step_count == (3000 // self.timestep):
+                    print("🛑 Test movement complete - stopping vehicle")
+                    self.stop()
+                
                 # Print status every 2 seconds
                 if step_count % (2000 // self.timestep) == 0:
                     pos = self.vehicle_state['position']
                     print(f"📊 Status: Position({pos['x']:.1f}, {pos['y']:.1f}) "
                           f"Speed: {self.vehicle_state['speed_kmh']:.1f} km/h "
-                          f"Gear: {self.vehicle_state['gear']}")
+                          f"Target: {self.target_speed * 3.6:.1f} km/h")
+                
+                step_count += 1
                 
                 # Demo commands for testing
                 if step_count == 100:  # After ~1.6 seconds

@@ -152,47 +152,64 @@ class WebotsControllerInterface(QObject):
         return None
     
     def send_command(self, command: Dict[str, Any]):
-        """Send command to Webots controller"""
+        """Send command to Webots controller via file communication"""
         if not self.controller_active:
             self.logger.warning("Webots controller not active")
             return
         
-        # In a real implementation, this would communicate with the Webots controller
-        # For now, we'll simulate the response
-        action = command.get('action', '')
-        
-        if action == 'move_forward':
-            speed = command.get('speed', 20.0)
-            self.vehicle_state['speed_kmh'] = speed
-            self.vehicle_state['gear'] = 'D'
-            self.logger.info(f"Command sent: Move forward at {speed} km/h")
+        try:
+            # Create commands directory if it doesn't exist
+            commands_dir = os.path.join(os.path.dirname(__file__), "commands")
+            os.makedirs(commands_dir, exist_ok=True)
             
-        elif action == 'move_backward':
-            speed = command.get('speed', 10.0)
-            self.vehicle_state['speed_kmh'] = -speed
-            self.vehicle_state['gear'] = 'R'
-            self.logger.info(f"Command sent: Move backward at {speed} km/h")
+            # Write command to file that Webots controller can read
+            command_file = os.path.join(commands_dir, "current_command.json")
             
-        elif action == 'turn_left':
-            self.vehicle_state['orientation']['yaw'] += 5.0
-            self.logger.info("Command sent: Turn left")
+            import json
+            with open(command_file, 'w') as f:
+                json.dump(command, f)
             
-        elif action == 'turn_right':
-            self.vehicle_state['orientation']['yaw'] -= 5.0
-            self.logger.info("Command sent: Turn right")
+            # Also update our local state for the overlay
+            action = command.get('action', '')
             
-        elif action == 'stop':
-            self.vehicle_state['speed_kmh'] = 0.0
-            self.vehicle_state['gear'] = 'P'
-            self.logger.info("Command sent: Emergency stop")
+            if action == 'forward':
+                speed = command.get('speed', 20.0)
+                self.vehicle_state['speed_kmh'] = speed
+                self.vehicle_state['gear'] = 'D'
+                self.logger.info(f"Command sent: Move forward at {speed} km/h")
+                
+            elif action == 'backward':
+                speed = command.get('speed', 10.0)
+                self.vehicle_state['speed_kmh'] = -speed
+                self.vehicle_state['gear'] = 'R'
+                self.logger.info(f"Command sent: Move backward at {speed} km/h")
+                
+            elif action == 'left':
+                self.vehicle_state['orientation']['yaw'] += 5.0
+                self.logger.info("Command sent: Turn left")
+                
+            elif action == 'right':
+                self.vehicle_state['orientation']['yaw'] -= 5.0
+                self.logger.info("Command sent: Turn right")
+                
+            elif action == 'stop':
+                self.vehicle_state['speed_kmh'] = 0.0
+                self.vehicle_state['gear'] = 'P'
+                self.logger.info("Command sent: Emergency stop")
+                
+            elif action == 'park':
+                self.vehicle_state['speed_kmh'] = 0.0
+                self.vehicle_state['gear'] = 'P'
+                self.logger.info("Command sent: Park vehicle")
+                
+            elif action == 'ai_command':
+                self.process_ai_command(command.get('text', ''))
             
-        elif action == 'park':
-            self.vehicle_state['speed_kmh'] = 0.0
-            self.vehicle_state['gear'] = 'P'
-            self.logger.info("Command sent: Park vehicle")
+            # Emit status update
+            self.status_updated.emit(self.vehicle_state)
             
-        elif action == 'ai_command':
-            self.process_ai_command(command.get('text', ''))
+        except Exception as e:
+            self.logger.error(f"Failed to send command: {e}")
     
     def process_ai_command(self, command_text: str):
         """Process AI command"""
@@ -569,6 +586,11 @@ class WebotsOverlayApp(QMainWindow):
         self.webots_interface = WebotsControllerInterface()
         self.webots_interface.status_updated.connect(self.update_status)
         
+        # Status update timer
+        self.status_timer = QTimer()
+        self.status_timer.timeout.connect(self.read_vehicle_status)
+        self.status_timer.start(100)  # Update every 100ms
+        
         # Create overlay windows
         self.control_overlay = ControlOverlay()
         self.status_overlay = StatusOverlay()
@@ -587,9 +609,26 @@ class WebotsOverlayApp(QMainWindow):
         
         self.logger.info("Webots overlay application started")
     
+    def read_vehicle_status(self):
+        """Read vehicle status from file"""
+        try:
+            status_file = os.path.join(os.path.dirname(__file__), "commands", "vehicle_status.json")
+            if os.path.exists(status_file):
+                import json
+                with open(status_file, 'r') as f:
+                    status = json.load(f)
+                
+                # Update status overlay
+                self.status_overlay.update_status(status)
+                
+        except Exception as e:
+            pass  # Silently handle file read errors
+    
     def handle_command(self, command: Dict[str, Any]):
         """Handle commands from overlay"""
         action = command.get('action', '')
+        
+        print(f"🎮 Overlay received command: {command}")  # Debug output
         
         if action == 'start_webots':
             world = command.get('world', 'automobile_simple.wbt')
@@ -599,6 +638,7 @@ class WebotsOverlayApp(QMainWindow):
             self.webots_interface.stop_webots()
             self.control_overlay.update_webots_status(False)
         else:
+            print(f"🚗 Sending command to Webots: {command}")  # Debug output
             self.webots_interface.send_command(command)
     
     def update_status(self, vehicle_state: Dict[str, Any]):
